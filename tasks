@@ -1,0 +1,109 @@
+<?php
+
+function customErrorHandler($errno, $errstr, $errfile, $errline) {
+		if (ini_get('display_errors')) {
+			echo 'Ошибка: ' . $errstr;
+		} else {
+			error_log('Ошибка' . $errstr);
+		}
+}
+
+ini_set('display_errors', !ini_get('display_errors'));
+// Установка пользовательского обработчика ошибок
+set_error_handler('customErrorHandler', E_WARNING);
+
+
+// Путь к файлу php.ini
+$iniFile = '/opt/plesk/php/8.2/etc/php.ini';
+
+// Получение массива с настройками из файла php.ini
+$config = parse_ini_file($iniFile);
+
+// Извлечение значений директив display_errors, error_reporting, error_log
+$displayErrors = ini_get('display_errors');
+$errorReporting = ini_get('error_reporting');
+$errorLog = ini_get('error_log');
+
+// Вывод значений на экран
+echo "display_errors: " . $displayErrorsfff . "<br>";
+set_error_handler(null, E_WARNING);
+echo "error_reporting: " . $errorReporting . "<br>";
+echo "error_log: " . $errorLog . "<br>";
+
+
+
+
+
+//// Путь к файлу php.ini
+//$iniFile = '/opt/plesk/php/8.2/etc/php.ini';
+//
+//// Получение массива с настройками из файла php.ini
+//$config = parse_ini_file($iniFile);
+//
+//// Извлечение значений директив display_errors, error_reporting, error_log
+//$displayErrors = ini_get('display_errors');
+//$errorReporting = ini_get('error_reporting');
+//$errorLog = ini_get('error_log');
+//
+//// Преобразуем битовую маску error_reporting в предопределенные константы с помощью функции error_reporting()
+//$errorReportingConstants = error_reporting();
+//
+//// Выводим значения на экран
+//echo "Значение директивы display_errors: " . $displayErrors . PHP_EOL. '<br>';
+//echo "Значение директивы error_reporting (в битовой маске): " . $errorReporting . PHP_EOL. '<br>';
+//echo "Значение директивы error_log: " . $errorLog . PHP_EOL . '<br>';
+//echo "Значение директивы error_reporting (в предопределенных константах): " . $errorReportingConstants . PHP_EOL . '<br>';
+
+
+
+
+
+//// Значение display_errors на противоположное
+//ini_set('display_errors', !ini_get('display_errors'));
+//// Указываем путь к файлу php.ini
+//$iniFile = '/opt/plesk/php/8.2/etc/php.ini';
+//
+//// Загружаем файл php.ini
+//$config = parse_ini_file($iniFile);
+//
+//// Извлечение значений директив display_errors, error_reporting, error_log
+//$displayErrors = ini_get('display_errors');
+//$errorReporting = ini_get('error_reporting');
+//$errorLog = ini_get('error_log');
+//
+//$errorReportingConstants = error_reporting();
+//// error_reporting равным E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE
+//$errorReportingDir = error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT & ~E_USER_NOTICE);
+//
+////сохраняй ошибки в /logs/errors.log в корне своего сайта
+//ini_set('error_log', '/var/www/vhosts/right-way.t-dir.dev/logs/right-way-khomyakov.t-dir.dev/errors.log');
+//
+//// Выводим значения на экран
+//echo "Значение директивы display_errors: " . $displayErrors . '<br>';
+//echo "Значение директивы error_reporting: " . $errorReportingDir . '<br>';
+//echo "Значение директивы error_log: " . $errorLog . '<br>';
+
+
+
+
+//function customErrorHandler($errno, $errstr, $errfile, $errline) {
+//	if ($errno === E_WARNING) {
+//		// Код обработки ошибки
+//		// Например, можно записать ошибку в лог файл
+//		error_log("Warning: $errstr in $errfile on line $errline");
+//	}
+//}
+//
+//// Установка пользовательского обработчика ошибок
+//set_error_handler('customErrorHandler');
+
+
+
+
+//error_reporting(E_ALL);
+////Вызов несуществующей функции, что вызовет ошибку E_WARNING
+//aaab();
+
+
+
+//error_reporting(E_ALL);
